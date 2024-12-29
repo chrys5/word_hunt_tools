@@ -10,17 +10,17 @@ WORDS_FOUND_FILE = 'words_found.txt'
 WORDS_AND_PATHS_FILE = 'words_found_and_paths.txt'
 
 def main():
-    #load trie
+    # load trie
     with open(PICKLE_FILE, 'rb') as f:
         dictionary = pickle.load(f)
 
-    #load table as np array
+    # load table as np array
     with open(TABLE_FILE, 'r') as f:
         table = f.readlines()
     table = [list(row.strip().upper()) for row in table]
     table = np.array(table, dtype=str)
 
-    #solve
+    # solve
     words, paths = solve(table, dictionary)
     unique_words = sorted(set(words), key=lambda x: (-len(x), x))
 
@@ -33,7 +33,7 @@ def main():
 
     print(score(table, dictionary))
     
-    #write words to file
+    # write words to file
     with open(WORDS_AND_PATHS_FILE, 'w') as f:
         f.write(header)
         for word, path in zip(words, paths):
