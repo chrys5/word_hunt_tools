@@ -11,17 +11,16 @@ def subdivide(wset):
     return subsets
 
 # formats equal-length words into a table
-def format_words(words, line_length=90):
+def table(word_length, words, line_length=90):
     output = ""
 
-    word_len = len(words[0])
-    tabs_needed = int(word_len / 8)
-    if word_len < 8:
-        delimeter_len = 8 - word_len
+    tabs_needed = int(word_length / 8)
+    if word_length < 8:
+        delimeter_len = 8 - word_length
     else:
-        delimeter_len = tabs_needed * 8 - word_len % 8
-    words_per_line = int(line_length / (word_len + delimeter_len))
-    words_per_line += int((line_length % ((tabs_needed+1)*8)) / word_len)
+        delimeter_len = tabs_needed * 8 - word_length % 8
+    words_per_line = int(line_length / (word_length + delimeter_len))
+    words_per_line += int((line_length % ((tabs_needed+1)*8)) / word_length)
 
     for i in range(0, len(words), words_per_line):
         output += '\t'.join(words[i:min(i+words_per_line, len(words))])
@@ -38,7 +37,7 @@ def format_wordset(wset):
     while n <= max(subsets, key=int):
         output += "\n"
         output += str(n) + "-letter words (" + str(len(subsets[n])) + "):\n"
-        output += format_words(subsets[n])
+        output += table(n, subsets[n])
         n += 1
     
     return output

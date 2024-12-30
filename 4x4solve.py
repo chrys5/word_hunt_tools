@@ -37,6 +37,11 @@ else:
         except AssertionError:
             print('Board must be 16 characters long')
             continue
+
+        print()
+        for i in range(0,16,4):
+            print(board_raw[i:i+4].upper())
+
         board = np.array([list(board_raw[i:i+4].upper()) for i in range(0, 16, 4)], dtype=str)
         words, _ = solve(board, dictionary)
         board_score = score(board, dictionary)
