@@ -1,5 +1,5 @@
 import numpy as np
-from generate_dictionary import TrieNode
+from .generate_dictionary import TrieNode
 from typing import List
 
 def solve(table: np.ndarray, dictionary: TrieNode):

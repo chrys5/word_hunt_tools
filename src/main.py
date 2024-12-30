@@ -1,6 +1,6 @@
 import pickle
 import numpy as np
-from generate_dictionary import TrieNode
+from src.generate_dictionary import TrieNode
 from solve import solve, score
 from matplotlib import pyplot as plt
 
