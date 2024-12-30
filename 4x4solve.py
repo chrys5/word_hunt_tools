@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 from src.generate_dictionary import TrieNode
 from src.solve import solve, score
+from src.format_wordset import format_wordset
 
 PICKLE_FILE = 'words/trie.pkl'
 
@@ -41,8 +42,7 @@ else:
         board_score = score(board, dictionary)
 
         unique_words = sorted(set(words), key=lambda x: (-len(x), x), reverse=True)
-        for word in unique_words:
-            print(word)
+        print(format_wordset(unique_words))
         
         print(f'Max Score: {board_score}')
         print()

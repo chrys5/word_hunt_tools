@@ -1,9 +1,3 @@
-WORDSET_FILE = "../test_wordset.txt"
-
-with open(WORDSET_FILE, 'r') as f:
-    # assume set is ordered from longest to shortest word
-    wordset = f.read().split('\n')
-
 # returns a dictionary that filters a wordset by word length
 def subdivide(wset):
     output = ""
@@ -48,5 +42,3 @@ def format_wordset(wset):
         n += 1
     
     return output
-
-print(format_wordset(wordset))
