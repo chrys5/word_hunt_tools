@@ -17,16 +17,10 @@ sys.path.append(os.path.join(root_dir, 'src'))
 with open(os.path.join(root_dir, PICKLE_FILE), 'rb') as f:
     dictionary = pickle.load(f)
 
+
 # if there's a command line argument, use that as the board, otherwise repeatedly ask for input
 if len(sys.argv) > 1:
     board_raw = sys.argv[1]
-    board = np.array([list(board_raw[i:i+4]) for i in range(0, 16, 4)])
-    words, _ = solve(board, dictionary)
-    board_score = score(board, dictionary)
-    unique_words = sorted(set(words), key=lambda x: (-len(x), x))
-    for word in unique_words:
-        print(word)
-    print(f'Max Score: {board_score}')
 else:
     while True:
         board_raw = input('Enter the board: ')
@@ -38,16 +32,16 @@ else:
             print('Board must be 16 characters long')
             continue
 
-        print()
-        for i in range(0,16,4):
-            print(board_raw[i:i+4].upper())
+board = np.array([list(board_raw[i:i+4].upper()) for i in range(0, 16, 4)], dtype=str)
+words, _ = solve(board, dictionary)
+board_score = score(board, dictionary)
 
-        board = np.array([list(board_raw[i:i+4].upper()) for i in range(0, 16, 4)], dtype=str)
-        words, _ = solve(board, dictionary)
-        board_score = score(board, dictionary)
+print()
+for i in range(0,16,4):
+    print(board_raw[i:i+4].upper())
 
-        unique_words = sorted(set(words), key=lambda x: (-len(x), x), reverse=True)
-        print(format_wordset(unique_words))
-        
-        print(f'Max Score: {board_score}')
-        print()
+unique_words = sorted(set(words), key=lambda x: (-len(x), x))
+print(format_wordset(unique_words))
+
+print(f'Max Score: {board_score}')
+print()

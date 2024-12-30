@@ -1,4 +1,5 @@
 # returns a dictionary that filters a wordset by word length
+# assumes wset is already sorted from longest to shortest words
 def subdivide(wset):
     output = ""
     subsets = {}
@@ -34,7 +35,7 @@ def format_wordset(wset):
 
     subsets = subdivide(wset)
     n = 3
-    while n <= max(subsets, key=int):
+    while n <= len(wset[0]):
         output += "\n"
         output += str(n) + "-letter words (" + str(len(subsets[n])) + "):\n"
         output += table(n, subsets[n])
