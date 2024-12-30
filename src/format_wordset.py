@@ -1,7 +1,7 @@
 WORDSET_FILE = "../test_wordset.txt"
 
 with open(WORDSET_FILE, 'r') as f:
-    # assume set is initially ordered from longest to shortest word
+    # assume set is ordered from longest to shortest word
     wordset = f.read().split('\n')
 
 # returns a dictionary that filters a wordset by word length

@@ -3,8 +3,8 @@ import numpy as np
 import sys
 import os
 from pathlib import Path
-from generate_dictionary import TrieNode
-from solve import solve, score
+from src.generate_dictionary import TrieNode
+from src.solve import solve, score
 
 PICKLE_FILE = 'words/trie.pkl'
 
