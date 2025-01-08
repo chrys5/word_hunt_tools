@@ -31,6 +31,9 @@ def table(word_length, words, line_length=90):
 
 # formats wordset for user
 def format_wordset(wset):
+    if len(wset) == 0:
+        return "\nNo words found\n"
+
     output = ""
 
     subsets = subdivide(wset)

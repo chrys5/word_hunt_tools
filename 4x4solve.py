@@ -3,16 +3,15 @@ import numpy as np
 import sys
 import os
 from pathlib import Path
+root_dir = Path(__file__).resolve().parent
+sys.path.append(root_dir)
+sys.path.append(os.path.join(root_dir, 'src'))
+
 from src.generate_dictionary import TrieNode
 from src.solve import solve, score
 from src.format_wordset import format_wordset
 
 PICKLE_FILE = 'words/trie.pkl'
-
-
-root_dir = Path(__file__).resolve().parent
-sys.path.append(root_dir)
-sys.path.append(os.path.join(root_dir, 'src'))
 
 with open(os.path.join(root_dir, PICKLE_FILE), 'rb') as f:
     dictionary = pickle.load(f)

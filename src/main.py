@@ -1,6 +1,6 @@
 import pickle
 import numpy as np
-from src.generate_dictionary import TrieNode
+from generate_dictionary import TrieNode
 from solve import solve, score
 from matplotlib import pyplot as plt
 
@@ -13,7 +13,7 @@ WORDS_AND_PATHS_FILE = 'words_found_and_paths.txt'
 def main():
     # load trie
     with open(PICKLE_FILE, 'rb') as f:
-        dictionary = pickle.load(f)
+        dictionary: TrieNode = pickle.load(f)
 
     # load table as np array
     with open(BOARD_FILE, 'r') as f:
