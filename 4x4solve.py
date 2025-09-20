@@ -1,5 +1,3 @@
-import pickle
-import numpy as np
 import sys
 import os
 from pathlib import Path
@@ -7,6 +5,8 @@ root_dir = Path(__file__).resolve().parent
 sys.path.append(root_dir)
 sys.path.append(os.path.join(root_dir, 'src'))
 
+import pickle
+import numpy as np
 from src.generate_dictionary import TrieNode
 from src.solve import solve, score
 from src.format_wordset import format_wordset
